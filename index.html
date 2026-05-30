@@ -3,15 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horolens - Le gestionnaire de ta collection horlogère</title>
+    <title>Horolens — Ton compagnon horloger</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
-        h1 { font-size: 2.5em; color: #007AFF; margin-bottom: 10px; }
-        h2 { margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .hero { text-align: center; padding: 50px 0; background-color: #f9f9f9; border-radius: 20px; margin-bottom: 40px; }
-        .app-icon { width: 120px; height: 120px; border-radius: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .footer { margin-top: 50px; font-size: 0.8em; color: #777; text-align: center; }
-        a { color: #007AFF; text-decoration: none; }
+        :root {
+            --bg-color: #0b0b0c;
+            --card-bg: #16161a;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-color: #3b82f6;
+            --border-color: #27272a;
+        }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-primary); 
+            background-color: var(--bg-color);
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+        }
+        
+        h1 { font-size: 2.8em; color: var(--text-primary); margin-bottom: 5px; font-weight: 800; letter-spacing: -0.03em; }
+        h2 { font-size: 1.8em; margin-top: 50px; margin-bottom: 20px; font-weight: 700; letter-spacing: -0.02em; }
+        h3 { font-size: 1.2em; margin-top: 25px; color: var(--accent-color); font-weight: 600; }
+        
+        .hero { 
+            text-align: center; 
+            padding: 60px 20px; 
+            background: linear-gradient(145deg, #18181b, #09090b);
+            border: 1px solid var(--border-color);
+            border-radius: 24px; 
+            margin-bottom: 50px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .app-icon { 
+            width: 120px; 
+            height: 120px; 
+            border-radius: 26px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4); 
+            margin-bottom: 25px; 
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .feature-card strong {
+            display: block;
+            font-size: 1.1em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+        
+        p, li { color: var(--text-secondary); }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        
+        .footer { 
+            margin-top: 80px; 
+            font-size: 0.85em; 
+            color: #52525b; 
+            text-align: center; 
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+        }
+        
+        a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+        em { color: #71717a; }
     </style>
 </head>
 <body>
@@ -19,36 +116,55 @@
     <div class="hero">
         <img src="icon.png" alt="Logo Horolens" class="app-icon">
         <h1>Horolens</h1>
-        <p>Le gestionnaire de ta collection horlogère, directement dans ta poche.</p>
+        <p class="tagline">Ton compagnon horloger. Suivi, Dressing, Statistiques & Précision.</p>
     </div>
 
     <h2>À propos de l'application</h2>
-    <p>Horolens est l'outil ultime pensé par et pour les passionnés d'horlogerie. Fini les fichiers Excel obscurs, l'application te permet de :</p>
-    <ul>
-        <li><strong>Gérer ton Garage :</strong> Archive tes montres, leur fiche technique, tes documents (factures, garantie) et l'historique d'entretien.</li>
-        <li><strong>Créer ton Dressing :</strong> Enregistre tes bracelets et trouve les associations avec tes montres selon l'entrecorne.</li>
-        <li><strong>Mesurer la Précision :</strong> Utilise le chronocomparateur intégré pour écouter le battement de ton mouvement mécanique et mesurer sa dérive (s/j).</li>
-        <li><strong>Exporter des Certificats :</strong> Génère des fiches d'identité PDF complètes pour chaque pièce de ta collection.</li>
-    </ul>
+    <p>Horolens est l'outil ultime pensé par et pour les passionnés d'horlogerie. Fini les fichiers Excel obscurs. L'application centralise et analyse tout votre univers horloger de manière moderne et intuitive :</p>
+    
+    <div class="features-grid">
+        <div class="feature-card">
+            <strong>📊 Statistiques & Wrist Time Smart</strong>
+            <p>Suivez vos habitudes de portée grâce à la Routine Matinale. Associez des tags NFC ou des QR Codes physiques à vos écrins pour mettre vos montres au poignet en un éclair.</p>
+        </div>
+        <div class="feature-card">
+            <strong>🔍 Recherche & Filtres Avancés</strong>
+            <p>Explorez votre collection et votre Dressing à bracelets instantanément. Filtrez vos bracelets compatibles automatiquement selon l'entrecorne, la matière ou la couleur.</p>
+        </div>
+        <div class="feature-card">
+            <strong>⏱️ Chronocomparateur (Timegrapher PRO)</strong>
+            <p>Mesurez la santé de vos mouvements mécaniques en temps réel. Analysez la dérive (s/j), l'amplitude du balancier et le repère (Beat Error) via le micro ou un capteur externe.</p>
+        </div>
+        <div class="feature-card">
+            <strong>⚠️ Alertes d'Entretien Automatiques</strong>
+            <p>Archivez vos pièces techniques et documents. Soyez notifié automatiquement dès que l'intervalle de révision recommandé pour l'une de vos montres est dépassé.</p>
+        </div>
+        <div class="feature-card" style="grid-column: span 2;">
+            <strong>📄 Exports PDF Premium</strong>
+            <p>Générez instantanément des fiches d'identité élégantes pour vos assurances, éditez des certificats de cession conformes avec signature lors d'une vente, ou imprimez vos planches de QR Codes pour organiser vos coffres.</p>
+        </div>
+    </div>
 
     <h2>Support & Contact</h2>
-    <p>Tu as rencontré un bug ? Tu as une suggestion pour améliorer le garage ?</p>
-    <p>Contacte-nous à : <strong><a href="mailto:horolens@gmail.com">horolens@gmail.com</a></strong></p>
+    <p>Une suggestion pour améliorer l'application, un bug constaté, ou une idée de fonctionnalité ?</p>
+    <div class="contact-box">
+        Contactez-nous directement à : <strong><a href="mailto:horolens@gmail.com">horolens@gmail.com</a></strong>
+    </div>
 
     <h2>Politique de Confidentialité (Privacy Policy)</h2>
-    <p><em>Dernière mise à jour : 21 Mars 2026</em></p>
+    <p><em>Dernière mise à jour : 30 Mai 2026</em></p>
     
-    <h3>1. Tes données t'appartiennent</h3>
-    <p>Horolens est conçu autour de ta vie privée. Les informations de ta collection (photos, prix d'achat, factures, numéros de série) sont stockées <strong>localement sur ton appareil</strong> et sécurisées via ton compte personnel Apple iCloud. Nous n'avons aucun accès à ton garage ni à tes données personnelles.</p>
+    <h3>1. Vos données vous appartiennent</h3>
+    <p>Horolens est bâti autour du respect absolu de votre vie privée. Toutes les informations relatives à votre collection (photos, prix, notes, documents de garantie, numéros de série) sont stockées <strong>strictement en local sur votre appareil</strong> et synchronisées via votre compte personnel sécurisé Apple iCloud. Nous n'avons aucun serveur externe, aucun traceur, et aucun accès à votre garage.</p>
     
-    <h3>2. Accès au Microphone</h3>
-    <p>L'outil de "Précision" nécessite l'accès au microphone de ton appareil pour écouter le tic-tac de tes montres mécaniques. L'analyse du son est effectuée de manière <strong>100% locale</strong>. Aucun enregistrement vocal n'est sauvegardé sur ton appareil, ni transmis sur internet.</p>
+    <h3>2. Utilisation du Microphone</h3>
+    <p>Le module de mesure de précision (Timegrapher) nécessite l'accès au microphone de votre iPhone afin de capter la fréquence d'échappement de vos montres mécaniques. Le traitement audio est réalisé de manière <strong>100% locale</strong> via nos algorithmes DSP. Aucun enregistrement n'est stocké ou transmis sur le réseau.</p>
     
-    <h3>3. Accès à l'Appareil Photo et à la Pellicule</h3>
-    <p>Horolens demande l'accès à ton appareil photo et à ta galerie uniquement pour te permettre d'illustrer tes fiches (photos de montres, bracelets, documents de garantie). Ces images restent strictement privées sur ton appareil.</p>
+    <h3>3. Accès à l'Appareil Photo et à la Galerie</h3>
+    <p>L'autorisation d'accès aux photos est demandée uniquement pour vous permettre d'illustrer vos fiches de montres, de configurer votre dressing de bracelets ou de sauvegarder vos factures papier. Vos images restent confidentielles et confinées à votre espace de stockage sandbox iOS.</p>
 
     <div class="footer">
-        &copy; 2026 Horolens. Application indépendante créée pour les passionnés.
+        &copy; 2026 Horolens. Application indépendante créée avec passion pour les collectionneurs.
     </div>
 
 </body>
