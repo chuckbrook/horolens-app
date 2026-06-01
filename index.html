@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horolens — Ton compagnon horloger</title>
+    <title id="page-title">Horolens — Ton compagnon horloger</title>
     <style>
         :root {
             --bg-color: #0b0b0c;
@@ -21,7 +21,31 @@
             background-color: var(--bg-color);
             max-width: 850px; 
             margin: 0 auto; 
-            padding: 40px 20px; 
+            padding: 20px 20px 40px 20px; 
+        }
+
+        /* 🌐 Sélecteur de langue */
+        .lang-switcher-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .lang-select {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            cursor: pointer;
+            outline: none;
+            font-weight: 500;
+            transition: border-color 0.2s;
+        }
+
+        .lang-select:hover {
+            border-color: var(--accent-color);
         }
         
         h1 { font-size: 2.8em; color: var(--text-primary); margin-bottom: 5px; font-weight: 800; letter-spacing: -0.03em; }
@@ -113,59 +137,159 @@
 </head>
 <body>
 
+    <div class="lang-switcher-container">
+        <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="fr">Français 🇫🇷</option>
+            <option value="en">English 🇬🇧</option>
+        </select>
+    </div>
+
     <div class="hero">
         <img src="icon.png" alt="Logo Horolens" class="app-icon">
         <h1>Horolens</h1>
-        <p class="tagline">Ton compagnon horloger. Suivi, Dressing, Statistiques & Précision.</p>
+        <p class="tagline" data-i18n="tagline">Ton compagnon horloger. Suivi, Wrist Time, Statistiques & Précision.</p>
     </div>
 
-    <h2>À propos de l'application</h2>
-    <p>Horolens est l'outil ultime pensé par et pour les passionnés d'horlogerie. Fini les fichiers Excel obscurs. L'application centralise et analyse tout votre univers horloger de manière moderne et intuitive :</p>
+    <h2 data-i18n="about-title">À propos de l'application</h2>
+    <p data-i18n="about-text">Horolens est l'outil ultime pensé par et pour les passionnés d'horlogerie. Fini les fichiers Excel obscurs. L'application centralise et analyse tout votre univers horloger de manière moderne et intuitive :</p>
     
     <div class="features-grid">
         <div class="feature-card">
-            <strong>📊 Statistiques & Wrist Time Smart</strong>
-            <p>Suivez vos habitudes de portée grâce à la Routine Matinale. Associez des tags NFC ou des QR Codes physiques à vos écrins pour mettre vos montres au poignet en un éclair.</p>
+            <strong data-i18n="feat1-title">📊 Statistiques & Wrist Time Smart</strong>
+            <p data-i18n="feat1-text">Suivez vos habitudes de portée grâce à la Routine Matinale. Associez des tags NFC ou des QR Codes physiques à vos écrins pour mettre vos montres au poignet en un éclair.</p>
         </div>
         <div class="feature-card">
-            <strong>🔍 Recherche & Filtres Avancés</strong>
-            <p>Explorez votre collection et votre Dressing à bracelets instantanément. Filtrez vos bracelets compatibles automatiquement selon l'entrecorne, la matière ou la couleur.</p>
+            <strong data-i18n="feat2-title">🔍 Recherche & Filtres Avancés</strong>
+            <p data-i18n="feat2-text">Explorez votre collection et vos bracelets instantanément. Filtrez vos bracelets compatibles automatiquement selon l'entrecorne, la matière ou la couleur.</p>
         </div>
         <div class="feature-card">
-            <strong>⏱️ Chronocomparateur (Timegrapher PRO)</strong>
-            <p>Mesurez la santé de vos mouvements mécaniques en temps réel. Analysez la dérive (s/j), l'amplitude du balancier et le repère (Beat Error) via le micro ou un capteur externe.</p>
+            <strong data-i18n="feat3-title">⏱️ Chronocomparateur (Timegrapher PRO)</strong>
+            <p data-i18n="feat3-text">Mesurez la santé de vos mouvements mécaniques en temps réel. Analysez la dérive (s/j), l'amplitude du balancier et le repère (Beat Error) via le micro ou un capteur externe.</p>
         </div>
         <div class="feature-card">
-            <strong>⚠️ Alertes d'Entretien Automatiques</strong>
-            <p>Archivez vos pièces techniques et documents. Soyez notifié automatiquement dès que l'intervalle de révision recommandé pour l'une de vos montres est dépassé.</p>
+            <strong data-i18n="feat4-title">⚠️ Alertes d'Entretien Automatiques</strong>
+            <p data-i18n="feat4-text">Archivez vos pièces techniques et documents. Soyez notifié automatiquement dès que l'intervalle de révision recommandé pour l'une de vos montres est dépassé.</p>
         </div>
         <div class="feature-card" style="grid-column: span 2;">
-            <strong>📄 Exports PDF Premium</strong>
-            <p>Générez instantanément des fiches d'identité élégantes pour vos assurances, éditez des certificats de cession conformes avec signature lors d'une vente, ou imprimez vos planches de QR Codes pour organiser vos coffres.</p>
+            <strong data-i18n="feat5-title">📄 Exports PDF Premium</strong>
+            <p data-i18n="feat5-text">Générez instantanément des fiches d'identité élégantes pour vos assurances, éditez des certificats de cession conformes avec signature lors d'une vente, ou imprimez vos planches de QR Codes pour organiser vos coffres.</p>
         </div>
     </div>
 
-    <h2>Support & Contact</h2>
-    <p>Une suggestion pour améliorer l'application, un bug constaté, ou une idée de fonctionnalité ?</p>
+    <h2 data-i18n="support-title">Support & Contact</h2>
+    <p data-i18n="support-text">Une suggestion pour améliorer l'application, un bug constaté, ou une idée de fonctionnalité ?</p>
     <div class="contact-box">
-        Contactez-nous directement à : <strong><a href="mailto:horolens@gmail.com">horolens@gmail.com</a></strong>
+        <span data-i18n="contact-prefix">Contactez-nous directement à :</span> <strong><a href="mailto:horolens@gmail.com">horolens@gmail.com</a></strong>
     </div>
 
-    <h2>Politique de Confidentialité (Privacy Policy)</h2>
-    <p><em>Dernière mise à jour : 30 Mai 2026</em></p>
+    <h2 data-i18n="privacy-title">Politique de Confidentialité (Privacy Policy)</h2>
+    <p><em data-i18n="privacy-update">Dernière mise à jour : 30 Mai 2026</em></p>
     
-    <h3>1. Vos données vous appartiennent</h3>
-    <p>Horolens est bâti autour du respect absolu de votre vie privée. Toutes les informations relatives à votre collection (photos, prix, notes, documents de garantie, numéros de série) sont stockées <strong>strictement en local sur votre appareil</strong> et synchronisées via votre compte personnel sécurisé Apple iCloud. Nous n'avons aucun serveur externe, aucun traceur, et aucun accès à votre garage.</p>
+    <h3 data-i18n="p1-title">1. Vos données vous appartiennent</h3>
+    <p data-i18n="p1-text">Horolens est bâti autour du respect absolu de votre vie privée. Toutes les informations relatives à votre collection (photos, prix, notes, documents de garantie, numéros de série) sont stockées <strong>strictement en local sur votre appareil</strong> et synchronisées via votre compte personnel sécurisé Apple iCloud. Nous n'avons aucun serveur externe, aucun traceur, et aucun accès à votre garage.</p>
     
-    <h3>2. Utilisation du Microphone</h3>
-    <p>Le module de mesure de précision (Timegrapher) nécessite l'accès au microphone de votre iPhone afin de capter la fréquence d'échappement de vos montres mécaniques. Le traitement audio est réalisé de manière <strong>100% locale</strong> via nos algorithmes DSP. Aucun enregistrement n'est stocké ou transmis sur le réseau.</p>
+    <h3><span data-i18n="p2-title">2. Utilisation du Microphone</span></h3>
+    <p data-i18n="p2-text">Le module de mesure de précision (Timegrapher) nécessite l'accès au microphone de votre iPhone afin de capter la fréquence d'échappement de vos montres mécaniques. Le traitement audio est réalisé de manière <strong>100% locale</strong> via nos algorithmes DSP. Aucun enregistrement n'est stocké ou transmis sur le réseau.</p>
     
-    <h3>3. Accès à l'Appareil Photo et à la Galerie</h3>
-    <p>L'autorisation d'accès aux photos est demandée uniquement pour vous permettre d'illustrer vos fiches de montres, de configurer votre dressing de bracelets ou de sauvegarder vos factures papier. Vos images restent confidentielles et confinées à votre espace de stockage sandbox iOS.</p>
+    <h3><span data-i18n="p3-title">3. Accès à l'Appareil Photo et à la Galerie</span></h3>
+    <p data-i18n="p3-text">L'autorisation d'accès aux photos est demandée uniquement pour vous permettre d'illustrer vos fiches de montres, de configurer votre collection de bracelets ou de sauvegarder vos factures papier. Vos images restent confidentielles et confinées à votre espace de stockage sandbox iOS.</p>
 
-    <div class="footer">
+    <div class="footer" id="page-footer">
         &copy; 2026 Horolens. Application indépendante créée avec passion pour les collectionneurs.
     </div>
+
+    <script>
+        const translations = {
+            fr: {
+                title: "Horolens — Ton compagnon horloger",
+                tagline: "Ton compagnon horloger. Suivi, Wrist Time, Statistiques & Précision.",
+                "about-title": "À propos de l'application",
+                "about-text": "Horolens est l'outil ultime pensé par et pour les passionnés d'horlogerie. Fini les fichiers Excel obscurs. L'application centralise et analyse tout votre univers horloger de manière moderne et intuitive :",
+                "feat1-title": "📊 Statistiques & Wrist Time Smart",
+                "feat1-text": "Suivez vos habitudes de portée grâce à la Routine Matinale. Associez des tags NFC ou des QR Codes physiques à vos écrins pour mettre vos montres au poignet en un éclair.",
+                "feat2-title": "🔍 Recherche & Filtres Avancés",
+                "feat2-text": "Explorez votre collection et vos bracelets instantanément. Filtrez vos bracelets compatibles automatiquement selon l'entrecorne, la matière ou la couleur.",
+                "feat3-title": "⏱️ Chronocomparateur (Timegrapher PRO)",
+                "feat3-text": "Mesurez la santé de vos mouvements mécaniques en temps réel. Analysez la dérive (s/j), l'amplitude du balancier et le repère (Beat Error) via le micro ou un capteur externe.",
+                "feat4-title": "⚠️ Alertes d'Entretien Automatiques",
+                "feat4-text": "Archivez vos pièces techniques et documents. Soyez notifié automatiquement dès que l'intervalle de révision recommandé pour l'une de vos montres est dépassé.",
+                "feat5-title": "📄 Exports PDF Premium",
+                "feat5-text": "Générez instantanément des fiches d'identité élégantes pour vos assurances, éditez des certificats de cession conformes avec signature lors d'une vente, ou imprimez vos planches de QR Codes pour organiser vos coffres.",
+                "support-title": "Support & Contact",
+                "support-text": "Une suggestion pour améliorer l'application, un bug constaté, ou une idée de fonctionnalité ?",
+                "contact-prefix": "Contactez-nous directement à :",
+                "privacy-title": "Politique de Confidentialité (Privacy Policy)",
+                "privacy-update": "Dernière mise à jour : 30 Mai 2026",
+                "p1-title": "1. Vos données vous appartiennent",
+                "p1-text": "Horolens est bâti autour du respect absolu de votre vie privée. Toutes les informations relatives à votre collection (photos, prix, notes, documents de garantie, numéros de série) sont stockées strictement en local sur votre appareil et synchronisées via votre compte personnel sécurisé Apple iCloud. Nous n'avons aucun serveur externe, aucun traceur, et aucun accès à votre garage.",
+                "p2-title": "2. Utilisation du Microphone",
+                "p2-text": "Le module de mesure de précision (Timegrapher) nécessite l'accès au microphone de votre iPhone afin de capter la fréquence d'échappement de vos montres mécaniques. Le traitement audio est réalisé de manière 100% locale via nos algorithmes DSP. Aucun enregistrement n'est stocké ou transmis sur le réseau.",
+                "p3-title": "3. Accès à l'Appareil Photo et à la Galerie",
+                "p3-text": "L'autorisation d'accès aux photos est demandée uniquement pour vous permettre d'illustrer vos fiches de montres, de configurer votre collection de bracelets ou de sauvegarder vos factures papier. Vos images restent confidentielles et confinées à votre espace de stockage sandbox iOS.",
+                footer: "© 2026 Horolens. Application indépendante créée avec passion pour les collectionneurs."
+            },
+            en: {
+                title: "Horolens — Your watch companion",
+                tagline: "Your watch companion. Tracking, Wrist Time, Statistics & Accuracy.",
+                "about-title": "About the application",
+                "about-text": "Horolens is the ultimate tool designed by and for watch enthusiasts. No more obscure Excel spreadsheets. The app centralizes and analyzes your entire watch universe in a modern and intuitive way:",
+                "feat1-title": "📊 Smart Statistics & Wrist Time",
+                "feat1-text": "Track your wearing habits with the Morning Routine. Link NFC tags or physical QR codes to your watch boxes to instantly log your watch on your wrist.",
+                "feat2-title": "🔍 Advanced Search & Filters",
+                "feat2-text": "Explore your collection and your straps instantly. Automatically filter compatible straps by lug width, material, or color.",
+                "feat3-title": "⏱️ Built-in Timegrapher (Timegrapher PRO)",
+                "feat3-text": "Measure the health of your mechanical movements in real time. Analyze daily rate (s/d), balance wheel amplitude, and beat error via the microphone or an external sensor.",
+                "feat4-title": "⚠️ Automatic Maintenance Alerts",
+                "feat4-text": "Log your technical details and documents. Get notified automatically as soon as the recommended service interval for any of your watches is exceeded.",
+                "feat5-title": "📄 Premium PDF Exports",
+                "feat5-text": "Instantly generate sleek ID sheets for insurance, create compliant bills of sale with signatures when selling a piece, or print QR code sheets to organize your safes.",
+                "support-title": "Support & Contact",
+                "support-text": "Any suggestion to improve the app, a bug found, or a new feature idea?",
+                "contact-prefix": "Contact us directly at:",
+                "privacy-title": "Privacy Policy",
+                "privacy-update": "Last updated: May 30, 2026",
+                "p1-title": "1. Your data belongs to you",
+                "p1-text": "Horolens is built around the absolute respect of your privacy. All information related to your collection (photos, prices, notes, warranty documents, serial numbers) is stored strictly locally on your device and synchronized via your personal secure Apple iCloud account. We have no external servers, no trackers, and no access to your collection.",
+                "p2-title": "2. Microphone Usage",
+                "p2-text": "The precision measurement module (Timegrapher) requires access to your iPhone's microphone to capture the beat frequency of your mechanical watches. Audio processing is performed 100% locally via our DSP algorithms. No recordings are stored or transmitted over the network.",
+                "p3-title": "3. Camera and Photo Library Access",
+                "p3-text": "Camera and photo access permissions are requested solely to let you illustrate your watch sheets, configure your strap inventory, or save paper invoices. Your images remain confidential and confined to your iOS sandbox storage.",
+                footer: "© 2026 Horolens. Independent app created with passion for collectors."
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Applique l'attribut de langue HTML
+            document.documentElement.lang = lang;
+            
+            // Sauvegarde le choix de l'utilisateur
+            localStorage.setItem('horolens-lang', lang);
+            
+            // Met à jour la balise Title de la page
+            document.getElementById('page-title').innerText = translations[lang].title;
+            
+            // Parcourt tous les éléments avec l'attribut data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Cas particuliers du footer
+            document.getElementById('page-footer').innerHTML = translations[lang].footer;
+        }
+
+        // Chargement initial (Détection auto de la langue préférée)
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedLang = localStorage.getItem('horolens-lang');
+            const browserLang = navigator.language.startsWith('en') ? 'en' : 'fr';
+            const defaultLang = savedLang || browserLang;
+            
+            document.getElementById('langSelect').value = defaultLang;
+            changeLanguage(defaultLang);
+        });
+    </script>
 
 </body>
 </html>
